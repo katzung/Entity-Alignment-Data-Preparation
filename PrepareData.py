@@ -101,6 +101,8 @@ def prepare_data(source, results, ftp_1, ftp_2):
     kgs_ids = get_kgs_ids(results)
     prepared_data['Ent1'] = get_names(kgs_ids, prepared_data['Ent1_ID'])
     prepared_data['Ent2'] = get_names(kgs_ids, prepared_data['Ent2_ID'])
+    prepared_data['Ent1Full'] = get_names(kgs_ids, prepared_data['Ent1_ID'])
+    prepared_data['Ent2Full'] = get_names(kgs_ids, prepared_data['Ent2_ID'])
 
     print('Language definition')
     prepared_data['Language'] = determine_lang(prepared_data['Ent1_ID'])
@@ -113,7 +115,6 @@ def prepare_data(source, results, ftp_1, ftp_2):
     prepared_data = align_types(prepared_data)
 
     print('Delete hosts')
-    kgs_ids = get_kgs_ids(results)
     prepared_data['Ent1'] = get_names_and_delete_hosts(kgs_ids, prepared_data['Ent1_ID'])
     prepared_data['Ent2'] = get_names_and_delete_hosts(kgs_ids, prepared_data['Ent2_ID'])
 
@@ -132,7 +133,15 @@ if __name__ == '__main__':
     df = prepare_data(dbp15kPath, alignmentResultsPath, instanceTypesEn, instanceTypesRu)
 
     print('Saving csv')
-
     resultFolder = 'output'
     path = resultFolder + '/' + outputFilename + '.csv'
     df.to_csv(path, index=False)
+
+    alignment = pd.read_csv(path, delimiter = ',')
+    alignment.rename(columns = {'Type':'subClass'}, inplace = True)
+    types = pd.read_csv('data/onthology_vertexes.csv', delimiter = ',')
+    types.rename(columns = {'Type':'subClass'}, inplace = True)
+
+    count_Types = alignment.groupby(['subClass']).count()[['Ent1_ID']]
+    count_Types.rename(columns = {'Ent1_ID':'CountNodes'}, inplace = True)
+    count_Types.to_csv('output/count_' + outputFilename + '.csv')

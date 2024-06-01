@@ -15,6 +15,9 @@ cd путь/к/проекту
 pip install -r requirements.txt
 ```
 
+Также необходимо в папке data создать каталог instance_types и положить в него файлы instance_types_en.ttl, instance_types_ru.ttl, которые можно скачать по ссылке
+https://drive.google.com/drive/folders/133hhFWgoslk6hfJPODAQlq9xwstz1y3-?usp=sharing
+
 ### Запуск программы
 
 Для запуска программы нужно перейти в файл PrepareData.py и в нем установить значения переменных `alignmentResultsPath` и `outputFilename` на путь к результатам работы выбранного алгоритма выравнивания и желаемое название выходного файла соответственно. По умолчанию выбраны корректные имена для алгоритма MultiKE
