@@ -1,4 +1,5 @@
 __pycache__/
+.venv/
 output/
 github_token.txt
 data/instance_types/*.ttl
