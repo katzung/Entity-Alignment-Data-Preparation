@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.manifold import TSNE
 from utils import *
 from AlignTypes import align_types
+import os
 
 
 def dimension_decrease(X):
@@ -89,7 +90,7 @@ def prepare_data(source, results, ftp_1, ftp_2):
 
     print('Dimension decrease')
     embeds = dimension_decrease(embeds)
-    prepared_data = pd.DataFrame(embeds, columns=['x', 'y'])
+    prepared_data = pd.DataFrame(embeds, columns=['X', 'Y'])
     
     print('Pairs definition')
     ids_1 = list(prepared_data.index)
@@ -134,6 +135,8 @@ if __name__ == '__main__':
 
     print('Saving csv')
     resultFolder = 'output'
+    if os.path.isdir(resultFolder) == False:
+        os.mkdir(resultFolder)
     path = resultFolder + '/' + outputFilename + '.csv'
     df.to_csv(path, index=False)
 

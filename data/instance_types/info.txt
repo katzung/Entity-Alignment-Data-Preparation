@@ -1,0 +1,1 @@
+Сюда положить файлы instance_types_**.ttl (en и ru)
