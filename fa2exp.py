@@ -54,7 +54,7 @@ forceatlas2 = ForceAtlas2(
                         verbose=True)
 pos = forceatlas2.forceatlas2_networkx_layout(G, pos=positions, iterations=200)
 
-for i in range(0, 30000):
+for i in range(0, len(df)):
     df.at[i, 'X'] = pos[i][0]
     df.at[i, 'Y'] = pos[i][1]
 
