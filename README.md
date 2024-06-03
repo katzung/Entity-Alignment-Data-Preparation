@@ -14,6 +14,7 @@ git clone https://github.com/katzung/Entity-Alignment-Data-Preparation.git`
 cd путь/к/проекту
 pip install -r requirements.txt
 ```
+Тестировалось на Python 3.12.3
 
 Также необходимо в папке data создать каталог instance_types и положить в него файлы instance_types_en.ttl, instance_types_ru.ttl, которые можно скачать по ссылке
 https://drive.google.com/drive/folders/133hhFWgoslk6hfJPODAQlq9xwstz1y3-?usp=sharing
@@ -23,3 +24,5 @@ https://drive.google.com/drive/folders/133hhFWgoslk6hfJPODAQlq9xwstz1y3-?usp=sha
 Для запуска программы нужно перейти в файл PrepareData.py и в нем установить значения переменных `alignmentResultsPath` и `outputFilename` на путь к результатам работы выбранного алгоритма выравнивания и желаемое название выходного файла соответственно. По умолчанию выбраны корректные имена для алгоритма MultiKE
 
 После работы программа выдает выходные данные в формате .csv и кладет их в папку ouput. Можно для удобства поменять папку вывода сразу на папку с визуализацией, поменяв значение переменной `resultFolder` на путь к проекту с визуализацией
+
+Для получения графового изображения необходимо запустить файл fa2exp.py, указав в переменной `preparedDataFilename` значение, которое указывалось ранее в переменной `outputFilename`
