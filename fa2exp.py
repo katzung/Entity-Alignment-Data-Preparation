@@ -3,7 +3,7 @@ import pandas as pd
 import networkx as nx
 import csv
 from fa2_modified import ForceAtlas2
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from sklearn import preprocessing
 
 preparedDataFilename = 'MultiKE_EN_RU_15K_V1'
@@ -67,5 +67,5 @@ df['Y'] = XY_Scaled[:, [1]]
 
 df.to_csv('output/' + preparedDataFilename + '_graph.csv', index=False)
 
-nx.draw_networkx(G, pos, cmap=plt.get_cmap('jet'), node_size=50, with_labels=False)
-plt.show()
+#nx.draw_networkx(G, pos, cmap=plt.get_cmap('jet'), node_size=50, with_labels=False)
+#plt.show() 
