@@ -10,6 +10,9 @@ preparedDataFilename = 'MultiKE_EN_RU_15K_V1'
 
 df = pd.read_csv('output/' + preparedDataFilename + '.csv', delimiter = ',')
 
+countDf = pd.read_csv('output/count_' + preparedDataFilename + '.csv', delimiter=',')
+countDf.to_csv('output/count_' + preparedDataFilename + '_graph.csv', index=False)
+
 G = nx.Graph()
 
 positions = dict()
