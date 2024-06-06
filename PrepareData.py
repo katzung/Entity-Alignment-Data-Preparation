@@ -128,8 +128,8 @@ if __name__ == '__main__':
 
     dbp15kPath = 'data/EN_RU_15K_V1/'
 
-    alignmentResultsPath = 'data/MultiKE/EN_RU_15K_V1/631/20240416192852/'
-    outputFilename = 'MultiKE_EN_RU_15K_V1'
+    alignmentResultsPath = 'data/AttrE/EN_RU_15K_V1/631/20240417132409/'
+    outputFilename = 'AttrE_EN_RU_15K_V1'
 
     df = prepare_data(dbp15kPath, alignmentResultsPath, instanceTypesEn, instanceTypesRu)
 

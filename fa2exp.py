@@ -6,7 +6,7 @@ from fa2_modified import ForceAtlas2
 #import matplotlib.pyplot as plt
 from sklearn import preprocessing
 
-preparedDataFilename = 'MultiKE_EN_RU_15K_V1'
+preparedDataFilename = 'AttrE_EN_RU_15K_V1'
 
 df = pd.read_csv('output/' + preparedDataFilename + '.csv', delimiter = ',')
 
@@ -30,9 +30,13 @@ with open('output/' + preparedDataFilename + '.csv', encoding='utf8', newline=''
 with open('data/rel_triples_en_ru.csv', encoding='utf8', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
-        id1 = df.loc[df['Ent1Full'] == str(row['Ent1_ID'])].head(1)['Ent1_ID'].values[0]
-        id2 = df.loc[df['Ent1Full'] == str(row['Ent2_ID'])].head(1)['Ent1_ID'].values[0]
-        G.add_edge(id1, id2)
+        ids1 = df.loc[df['Ent1Full'] == str(row['Ent1_ID'])].head(1)['Ent1_ID']
+        if ids1.empty == False:
+            id1 = ids1.values[0]
+            ids2 = df.loc[df['Ent1Full'] == str(row['Ent2_ID'])].head(1)['Ent1_ID']
+            if ids2.empty == False:
+                id2 = ids2.values[0]
+                G.add_edge(id1, id2)
 
 
 forceatlas2 = ForceAtlas2(
